@@ -18,7 +18,7 @@ def index():
 @app.route('/predictdata',methods=['GET','POST'])
 def predict_datapoint():
     if request.method=='GET':
-        return render_template('home.html')
+        return render_template('index.html')  # Changed from 'home.html' to 'index.html'
     else:
         try:
             data=CustomData(
@@ -41,13 +41,13 @@ def predict_datapoint():
             print("After Prediction")
             print(f"Results: {results}")
             
-            return render_template('home.html',results=results[0])
+            return render_template('index.html',results=results[0])  # Changed from 'home.html' to 'index.html'
         
         except Exception as e:
-            print(f"❌ Error occurred: {str(e)}")
+            print(f" Error occurred: {str(e)}")
             import traceback
             traceback.print_exc()
-            return render_template('home.html',error=f"Prediction failed: {str(e)}")
+            return render_template('index.html',error=f"Prediction failed: {str(e)}")  # Changed from 'home.html' to 'index.html'
 
 if __name__=="__main__":
     app.run(host="0.0.0.0",debug=True)
